@@ -1,0 +1,17 @@
+<head><script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.6"> </script>
+<script>
+          async function run(){ 
+              model = await tf.loadModel('web_model/model.json') 
+          	  const txt1 = parseInt(document.getElementById("txt1").value)
+    		      const txt2 = parseInt(document.getElementById("txt2").value)
+              y = await model.predict(tf.tensor([[txt1, txt2]])) 
+              document.getElementById('out').innerHTML = y.dataSync()[0] 
+          } 
+</script>
+</head> 
+<body>
+<input id = 'txt1' type="text" name="username"> 
+<input id = 'txt2' type="text" name="username"> 
+<button onclick = "run()" >run</button>
+        <p id ='out'></p> 
+</body>
